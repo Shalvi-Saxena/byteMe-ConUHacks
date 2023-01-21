@@ -1,11 +1,14 @@
 import './App.css';
-import {UploadBtn} from './components/uploadBtn';
+import { Route, Routes } from "react-router-dom"
+import { Home } from './components/Home';
+import { UploadForm } from './components/UploadForm';
 
 function App() {
   return (
-    <div className=''>
-      <UploadBtn />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/upload" element={<UploadForm />} />
+    </Routes>
   );
 }
 
