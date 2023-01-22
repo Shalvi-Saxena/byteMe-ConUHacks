@@ -25,7 +25,6 @@ export const UploadBtn = () => {
     <div className='fixed right-10 bottom-10 flex flex-col items-end'>
         {isMenuVisible &&
         <div className='flex flex-col mb-5 bg-slate-600 p-2 rounded-md'>
-           
             <div className='flex m-2 items-center justify-end cursor-pointer' >
                 <label htmlFor="files" className="text-white text-lg font-medium ">Scan Receipt</label>
                 <input id="files" className='hidden' type="file" onChange={(e) => handleCapture(e.target)} />

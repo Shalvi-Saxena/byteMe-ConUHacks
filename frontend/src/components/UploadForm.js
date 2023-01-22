@@ -13,16 +13,15 @@ export const UploadForm = () => {
     const [location,setLocation] = useState('')
     const {state} = useLocation();  
     const { imageURL } = state;
-    console.log(imageURL);
+    // console.log(imageURL);
 
     const SearchPlaces = (text) => {
         setLocation(text.target.value)
         console.log('fg',text.target.value)
         var config = {
             method: 'get',
-            url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${text.target.value}&inputtype=text
-            query&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=${process.env.REACT_APP_MAP_KEY}`,
-            headers: {"Access-Control-Allow-Origin":"*" }
+            url: `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${text.target.value}&type=restaurant&key=${process.env.REACT_APP_MAP_KEY}`,
+            headers: {'Access-Control-Allow-Origin':'*'}
         };
         axios(config)
         .then(function (response) {
