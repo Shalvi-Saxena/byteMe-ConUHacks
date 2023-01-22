@@ -15,7 +15,7 @@ const getS3UploadUrl = async (image) => {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json',
+        'Content-Type': 'multipart/form-data',
         'Authorization': getToken(),
       },
       body: JSON.stringify(data),

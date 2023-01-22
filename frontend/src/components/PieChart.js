@@ -34,7 +34,6 @@ export const PieChart = () => {
   occ.forEach(a => labels.push(a['category_id']))
   occ.forEach(a => graphData.push(a['occurrence']))
 
-  console.log(labels,graphData)
   const data = {
     labels: labels,
     datasets: [

@@ -41,8 +41,9 @@ class Login extends Component {
       isLoading = false,
     } = loggedUser;
     return (
-      <Container className={classes.container} maxWidth="xs">
-        <Grid container spacing={3}>
+      <Container className="class1">
+        <h2>Login</h2>
+        <Grid container spacing={3} className="class2">
           <Grid item xs={12}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
