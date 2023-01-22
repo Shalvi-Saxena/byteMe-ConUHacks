@@ -1,0 +1,10 @@
+{
+  "name": "byteme-conuhacks",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    },
+    "scripts": {
+      "heroku-prebuild": "cd frontend"
+    }
+}
