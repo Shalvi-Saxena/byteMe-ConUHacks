@@ -27,12 +27,12 @@ export const LocalMarkets = () => {
         <div className='flex justify-around mt-4'>
             <div className='bg-white border-2 border-gray-500 rounded-full px-10 flex py-1'>
                 <PlaceIcon className='mr-3' />
-                <p>
+                <p className='text-base'>
                     Concordia University
                 </p>
             </div>
             <div className='bg-gray-700 rounded px-3 py-1'>
-                <p className='text-white font-medium'>
+                <p className='text-white text-base font-medium'>
                     Search
                 </p>
             </div>
@@ -45,7 +45,7 @@ export const LocalMarkets = () => {
                             <p className='text-lg font-semibold'>
                                 {item.name}
                             </p>
-                            <p className='mt-2'>
+                            <p className='mt-2 text-base'>
                                 {item.text}
                             </p>
                             <div className='bg-gray-700 rounded-md px-4 py-2 mt-5 flex justify-center'> 
