@@ -19,7 +19,7 @@ export const Dashboard = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isLangEN, setIsLangEN] = useState(true);
 
-  const userName = useSelector(state => state.loggedUser.data.userName) || '';
+  // const userName = useSelector(state => state.loggedUser.data.userName) || '';
 
 
   const settings = {
@@ -62,7 +62,7 @@ export const Dashboard = () => {
           </div>
         </div>}
       <div className='px-5'>
-        <p className=''>Hi {userName?.split(' ')[0]}, here's your financial summary</p>
+        {/* <p className=''>Hi {userName ? userName?.split(' ')[0] : ''}, here's your financial summary</p> */}
         <div className='mt-4'>
           <Slider {...settings}>
             <PieChart />
