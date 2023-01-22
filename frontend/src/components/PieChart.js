@@ -1,70 +1,37 @@
-import React,{useState} from 'react'
-import { Pie } from "react-chartjs-2";
+import React from 'react'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 
-export const Data = [
+ChartJS.register(ArcElement, Tooltip, Legend);
+export const data = {
+  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  datasets: [
     {
-      id: 1,
-      year: 2016,
-      userGain: 80000,
-      userLost: 823
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+      ],
+      borderWidth: 1,
     },
-    {
-      id: 2,
-      year: 2017,
-      userGain: 45677,
-      userLost: 345
-    },
-    {
-      id: 3,
-      year: 2018,
-      userGain: 78888,
-      userLost: 555
-    },
-    {
-      id: 4,
-      year: 2019,
-      userGain: 90000,
-      userLost: 4555
-    },
-    {
-      id: 5,
-      year: 2020,
-      userGain: 4300,
-      userLost: 234
-    }
-  ];
+  ],
+};
 
-export const PieChart = () => {
+export const PieChart = ({chartData}) => {
   return (
-    <div className='h-72 w-full'>
-        <Pie
-            data={{
-                labels: Data.map((data) => data.year), 
-                datasets: [
-                  {
-                    label: "Users Gained ",
-                    data: Data.map((data) => data.userGain),
-                    backgroundColor: [
-                      "rgba(75,192,192,1)",
-                      "#ecf0f1",
-                      "#50AF95",
-                      "#f3ba2f",
-                      "#2a71d0"
-                    ],
-                    borderColor: "black",
-                    borderWidth: 2
-                  }
-                ]
-              }}
-            options={{
-            plugins: {
-                title: {
-                display: true,
-                text: "Users Gained between 2016-2020"
-                }
-            }
-            }}
-        />
-    </div>
+    <Pie data={data} />
   )
 }

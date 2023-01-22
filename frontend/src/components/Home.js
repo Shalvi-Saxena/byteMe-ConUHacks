@@ -19,6 +19,7 @@ export const Home = () => {
         slidesToShow: 1,
         slidesToScroll: 1
       };
+     
   return (
     <div className=''>
         <div onClick={()=>setIsMenuVisible(!isMenuVisible)}>
@@ -51,9 +52,9 @@ export const Home = () => {
             <p className=''>Hi Deep, here's your financial summary</p>
             <div className='mt-4'>
                 <Slider {...settings}>
-                    {/* <PieChart /> */}
-                    <BarGraph />
-                    <LineGraph />
+                  <PieChart />
+                  <BarGraph />
+                  <LineGraph />
                 </Slider>
             </div>
             
