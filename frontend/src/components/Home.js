@@ -7,6 +7,7 @@ import Slider from "react-slick";
 import { PieChart } from './PieChart';
 import { BarGraph } from './BarGraph';
 import { LineGraph } from './LineGraph';
+import { InsightCard } from './InsightCard';
 
 export const Home = () => {
 
@@ -26,7 +27,7 @@ export const Home = () => {
             <MenuIcon className='m-4' style={{fontSize:30}} />
         </div>
         {isMenuVisible &&
-        <div className='flex w-1/2 h-screen bg-gray-600 fixed top-0 left-0' >
+        <div className='flex w-3/4 h-screen bg-gray-600 fixed top-0 left-0 z-40' >
             <CloseIcon className='absolute right-5 top-5 text-white' style={{fontSize:30}} onClick={()=>setIsMenuVisible(!isMenuVisible)}/>
             <div className='mt-5 ml-5'>
                 <p className='text-white font-bold text-2xl'>Deep</p>
@@ -56,6 +57,15 @@ export const Home = () => {
                   <BarGraph />
                   <LineGraph />
                 </Slider>
+            </div>
+            <div className='mt-10 pb-14'>
+              {
+                [1,2,3,4].map((item,index) => {
+                  return(
+                    <InsightCard key={index} />
+                  )
+                })
+              }
             </div>
             
         </div>
