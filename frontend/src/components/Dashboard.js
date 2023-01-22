@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { UploadBtn } from './uploadBtn';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -8,13 +8,19 @@ import { PieChart } from './PieChart';
 import { BarGraph } from './BarGraph';
 import { LineGraph } from './LineGraph';
 import { InsightCard } from './InsightCard';
+
+import { RecoCard } from './RecoCard';
+
 import { useSelector } from "react-redux";
+
 
 export const Dashboard = () => {
 
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isLangEN, setIsLangEN] = useState(true);
-  const userName = useSelector(state => state.loggedUser.data.userName) || '';
+
+  // const userName = useSelector(state => state.loggedUser.data.userName) || '';
+
 
   const settings = {
     dots: true,
@@ -31,13 +37,16 @@ export const Dashboard = () => {
       </div>
       {isMenuVisible &&
         <div className='flex w-3/4 h-screen bg-gray-600 fixed top-0 left-0 z-40' >
-          <CloseIcon className='absolute right-5 top-5 text-white' style={{ fontSize: 30 }} onClick={() => setIsMenuVisible(!isMenuVisible)} />
+          <CloseIcon className='absolute right-5 top-5 text-white' style={{ fontSize: 30 }} 
+          onClick={() => setIsMenuVisible(!isMenuVisible)} />
           <div className='mt-5 ml-5'>
             <p className='text-white font-bold text-2xl'>{userName}</p>
             <Link to="/"><p className='text-white text-xl mt-10'
               onClick={() => setIsMenuVisible(false)}>Home</p></Link>
             <Link to="/"><p className='text-white text-xl mt-5'
               onClick={() => setIsMenuVisible(false)}>History</p></Link>
+            <Link to="/local"><p className='text-white text-xl mt-5'
+              onClick={() => setIsMenuVisible(false)}>Local Deals</p></Link>
           </div>
           <div className='absolute bottom-32 flex w-full justify-center'>
             <div className='border-2 border-gray-900 flex w-1/2'>
@@ -53,7 +62,7 @@ export const Dashboard = () => {
           </div>
         </div>}
       <div className='px-5'>
-        <p className=''>Hi {userName.split(' ')[0]}, here's your financial summary</p>
+        {/* <p className=''>Hi {userName ? userName?.split(' ')[0] : ''}, here's your financial summary</p> */}
         <div className='mt-4'>
           <Slider {...settings}>
             <PieChart />
@@ -61,16 +70,30 @@ export const Dashboard = () => {
             <LineGraph />
           </Slider>
         </div>
-        <div className='mt-10 pb-14'>
+        <div className='mt-10'>
           {
-            [1, 2, 3, 4].map((item, index) => {
+            [1].map((item, index) => {
               return (
                 <InsightCard key={index} />
               )
             })
           }
         </div>
-
+        <div className='mt-2 '>
+          {
+            [1].map((item, index) => {
+              return (
+                <RecoCard key={index} />
+              )
+            })
+          }
+        </div>
+        <div className=''>
+          <img src="/image.png" alt="" className='' />
+        </div>
+        <div className='pb-14'>
+          <img src="/image2.png" alt="" className='' />
+        </div>
       </div>
       <UploadBtn />
     </div>

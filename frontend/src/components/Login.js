@@ -70,7 +70,8 @@ class Login extends Component {
             </Grid>
           </Grid>
           <Grid item xs={12}>
-            <Button disabled={isLoading} onClick={this.login.bind(this)} color="secondary" fullWidth type="submit" variant="contained">
+            <Button disabled={isLoading} onClick={this.login.bind(this)} 
+            fullWidth type="submit" variant="contained" style={{backgroundColor:'#374151'}}>
               {isLoading ? 'Logging in...' : 'Log in'}
             </Button>
           </Grid>
