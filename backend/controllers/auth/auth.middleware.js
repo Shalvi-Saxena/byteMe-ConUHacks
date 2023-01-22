@@ -4,10 +4,8 @@ const {
 
 const isUserAdmin = (req, res, next) => {
   try {
-    const {
-      isAdmin,
-    } = req.user;
-    if (!isAdmin) {
+    const secret = req.params.secret;
+    if (!secret !== process.env.MASTER_PASSWORD) {
       throw {
         code: 401,
         message: 'Unauthorized!',

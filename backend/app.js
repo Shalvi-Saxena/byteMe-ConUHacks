@@ -7,9 +7,6 @@ const router = require('./routes');
 const cors = require('cors');
 const morgan = require('morgan');
 const passport = require('passport');
-const {
-  createDummyData,
-} = require('./utils/sampleData');
 const AuthController = require('./routes/auth.routes');
 require('./config/passport')(passport);
 
@@ -35,14 +32,13 @@ passport.deserializeUser(function(user, done) {
 // API Routes
 app.get('/api/', (req, res) => {
   res.json({
-    name: 'PayPay Project Backend',
-    message: 'Welcome Developer!',
+    name: 'Expense Tracker Backend',
+    message: 'Welcome!',
   });
 });
 
-app.post('/createDummyData', createDummyData);
 app.use('/auth', AuthController);
-app.use('/api', passport.authenticate('jwt'), router);
+app.use('/api', router);
 
 // Start server for listen
 const server = app.listen(PORT, () => console.log(`Server is running on PORT: ${PORT}`));

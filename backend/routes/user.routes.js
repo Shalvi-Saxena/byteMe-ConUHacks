@@ -6,7 +6,7 @@ const {
     validateUpdateUser,
 } = require('../controllers/user/user.middleware');
 
-router.get('/current', UserController.getUserData);
+router.get('/', UserController.getUserData);
 router.post('/', isUserAdmin, validateCreateUser, UserController.createNewUser);
 router.patch('/:id', validateUpdateUser, UserController.updateUser);
 

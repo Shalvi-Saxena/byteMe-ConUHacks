@@ -2,6 +2,24 @@ const mongoose = require('mongoose'),
   Schema = mongoose.Schema,
   { ObjectId } = mongoose.Schema.Types;
 const bcrypt = require('bcrypt-nodejs');
+const { currencies, languages } = require('./constants');
+const CategoryModel = require('./category.model');
+
+const CategorySchema = new Schema({
+  id: {
+    type: ObjectId,
+    ref: CategoryModel,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  limit: {
+    type: Number,
+    required: false,
+  },
+}, { _id: false });
 
 const UserSchema = new Schema({
   email: {
@@ -28,7 +46,17 @@ const UserSchema = new Schema({
     },
   },
   settings: {
-    type: Object,
+    default_currency: {
+      type: String,
+      enum: currencies.map(c => c.code),
+      default: 'CAD',
+    },
+    default_language: {
+      type: String,
+      enum: languages.map(l => l.code),
+      default: 'EN',
+    },
+    categories: [CategorySchema],
   },
 }, {
   timestamps: true
@@ -66,4 +94,4 @@ UserSchema.methods.comparePassword = async function (password) {
   });
 };
 
-module.exports = mongoose.model('User', UserSchema, 'users');
+module.exports = mongoose.model('User', UserSchema, 'user_list');

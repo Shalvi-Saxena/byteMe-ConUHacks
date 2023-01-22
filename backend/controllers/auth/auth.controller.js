@@ -12,16 +12,26 @@ const signin = async (req, res) => {
   try {
     const {
       email,
+      countryCode,
+      mobileNumber,
       password,
     } = req.body;
-    console.log(email, password)
-    if (!email || !password) {
+
+    if (!(email || (countryCode && mobileNumber)) || !password) {
       throw {
         code: STATUS_CODES.DATA_NOT_FOUND,
-        message: 'Email and password required.',
+        message: 'Credentials required.',
       };
     }
-    const userData = await UserModel.findOne({ email });
+    const findClause = {};
+    if (email) {
+      findClause.email = email;
+    }
+    if (countryCode && mobileNumber) {
+      findClause['mobile.countryCode'] = countryCode;
+      findClause['mobile.number'] = mobileNumber;
+    }
+    const userData = await UserModel.findOne(findClause).lean();
     if (!userData) {
       throw {
         code: STATUS_CODES.DATA_NOT_FOUND,
@@ -40,13 +50,13 @@ const signin = async (req, res) => {
       expires: Date.now() + JWT_EXPIRY,
     };
     const token = jwt.sign(payload, process.env.JWT_SECRET);
+    delete userData.password;
     return successResponse({
       res,
       responseObject: {
         success: true,
         token: 'JWT ' + token,
-        userId: userData._id,
-        userName: userData.name,
+        ...userData,
       },
     });
   } catch (error) {
