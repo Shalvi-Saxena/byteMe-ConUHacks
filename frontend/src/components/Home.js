@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 
 const Home = ({ loggedUser }) => {
   return (
-    <Navigate to={loggedUser.isLoggedIn ? '/dashboard' : '/login'} />
+    // <Navigate to={loggedUser.isLoggedIn ? '/dashboard' : '/login'} />
+    <Navigate to={'/dashboard'} />
   );
 }
 

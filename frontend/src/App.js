@@ -10,6 +10,7 @@ import { Settings } from './components/Settings';
 import History from './components/History';
 import Login from './components/Login';
 import { Dashboard } from './components/Dashboard';
+import { LocalMarkets } from './components/LocalMarkets';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/history" element={<History />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/local" element={<LocalMarkets />} />
       </Routes>
     </Provider>
   );
