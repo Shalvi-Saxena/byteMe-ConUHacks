@@ -7,18 +7,17 @@ const {
   S3,
 } = api; 
 
-const getS3UploadUrl = async (image) => {
+const getS3UploadUrl = async ({ image }) => {
   try {
     let url = new URL(`${process.env.REACT_APP_API_URL}${BASE_URL}${S3}`);
-    let data = new FormData();
+    const data = new FormData();
     data.append('file', image);
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'multipart/form-data',
         'Authorization': getToken(),
       },
-      body: JSON.stringify(data),
+      body: data,
     });
     return response.json();
   } catch (error) {

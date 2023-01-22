@@ -33,7 +33,7 @@ export const Dashboard = () => {
         <div className='flex w-3/4 h-screen bg-gray-600 fixed top-0 left-0 z-40' >
           <CloseIcon className='absolute right-5 top-5 text-white' style={{ fontSize: 30 }} onClick={() => setIsMenuVisible(!isMenuVisible)} />
           <div className='mt-5 ml-5'>
-            <p className='text-white font-bold text-2xl'>Deep</p>
+            <p className='text-white font-bold text-2xl'>{userName}</p>
             <Link to="/"><p className='text-white text-xl mt-10'
               onClick={() => setIsMenuVisible(false)}>Home</p></Link>
             <Link to="/"><p className='text-white text-xl mt-5'

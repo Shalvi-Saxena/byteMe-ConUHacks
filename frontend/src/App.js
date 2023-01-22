@@ -1,9 +1,9 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import store from './store';
 import { Provider } from 'react-redux';
-import { UploadForm } from './components/UploadForm';
+import UploadForm from './components/UploadForm';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Settings } from './components/Settings';
@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/upload" element={<UploadForm />} />
+        <Route path="/add-expense" element={<UploadForm />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/history" element={<History />} />
         <Route path="/login" element={<Login />} />

@@ -6,7 +6,7 @@ const { uploadFileToS3 } = require('../../utils/s3.service');
 
 const uploadFile = async (req, res) =>  {
   try {
-    const user_id = '63cc5580bcf3d54f64dec4a5'//req.user._id;
+    const user_id = req.user._id;
     if (!req.file) {
       throw {
         message: 'Error uploading receipt. Missing file.',

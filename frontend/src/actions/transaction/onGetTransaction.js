@@ -1,6 +1,5 @@
 
 import { transactionApi } from '../../apis';
-import { setToken } from '../../utils/lib';
 import {
   actions
 } from '../../constants';
