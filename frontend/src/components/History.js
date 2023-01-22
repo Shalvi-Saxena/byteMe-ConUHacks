@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import { transactionActions } from '../actions';
 import { actions } from '../constants';
-import TransactionItem from './TransactionItem';
+// import TransactionItem from './TransactionItem';
 
 const styles = (theme) => ({
 
@@ -28,7 +28,7 @@ class History extends React.Component {
     return <div>
       <h3>History</h3>
       {transactions.map(txn => (
-        <TransactionItem data={txn} type={type} />
+        null
       ))}
     </div>
   }
