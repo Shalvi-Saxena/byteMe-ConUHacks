@@ -5,30 +5,42 @@ import CloseIcon from '@mui/icons-material/Close';
 import CreateIcon from '@mui/icons-material/Create';
 import { Link } from "react-router-dom"
 import FolderIcon from '@mui/icons-material/Folder';
+import { useNavigate } from "react-router-dom";
+
 
 export const UploadBtn = () => {
-
+    const navigate = useNavigate();
     const [isMenuVisible,setIsMenuVisible] = useState(false);
+
+    const handleCapture = (target) => {
+        if (target.files) {
+          if (target.files.length !== 0) {
+            const file = target.files[0];
+            // const newUrl = URL.createObjectURL(file);
+            navigate("/upload",{ state: { imageURL:file } });
+          }
+        }
+      }
   return (
     <div className='fixed right-10 bottom-10 flex flex-col items-end'>
         {isMenuVisible &&
-        <div className='flex flex-col mb-5'>
+        <div className='flex flex-col mb-5 bg-slate-600 p-2 rounded-md'>
+           
+            <div className='flex m-2 items-center justify-end cursor-pointer' >
+                <label htmlFor="files" className="text-white text-lg font-medium ">Scan Receipt</label>
+                <input id="files" className='hidden' type="file" onChange={(e) => handleCapture(e.target)} />
+                <PhotoCameraIcon className='text-white ml-4' style={{fontSize:30}} />
+            </div>
             <Link to="/upload">
-                <div className='flex m-2 items-center justify-end cursor-pointer'>
-                    <p className='text-gray-900 text-lg font-medium'>Scan Receipt</p>
-                    <PhotoCameraIcon className='text-slate-500 ml-4' style={{fontSize:35}} />
-                </div>
-            </Link>
-            <Link to="/upload">
-                <div className='flex m-2 items-center justify-end cursor-pointer'>
-                    <p className='text-gray-900 text-lg font-medium'>Upload</p>
-                    <FolderIcon className='text-slate-500 ml-4' style={{fontSize:35}} />
+                <div className='flex m-2 items-center justify-end cursor-pointer mt-5'>
+                    <p className='text-white text-lg font-medium'>Upload</p>
+                    <FolderIcon className='text-white ml-4' style={{fontSize:30}} />
                 </div>
             </Link>
             <Link to="/">
-                <div className='flex m-2 items-center cursor-pointer'>
-                    <p className='text-gray-900 text-lg font-medium'>Add Manually</p>
-                    <CreateIcon className='text-slate-500 ml-4' style={{fontSize:35}} />
+                <div className='flex m-2 items-center cursor-pointer mt-5'>
+                    <p className='text-white text-lg font-medium'>Add Manually</p>
+                    <CreateIcon className='text-white ml-4' style={{fontSize:30}} />
                 </div>
             </Link>
         </div>}
