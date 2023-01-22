@@ -3,13 +3,22 @@ import {UploadBtn} from './uploadBtn';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from "react-router-dom"
-import { GraphCard } from './GraphCard';
+import Slider from "react-slick";
+import { PieChart } from './PieChart';
+import { BarGraph } from './BarGraph';
+import { LineGraph } from './LineGraph';
 
 export const Home = () => {
 
     const [isMenuVisible,setIsMenuVisible] = useState(false);
     const [isLangEN,setIsLangEN] = useState(true);
-
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      };
   return (
     <div className=''>
         <div onClick={()=>setIsMenuVisible(!isMenuVisible)}>
@@ -38,10 +47,14 @@ export const Home = () => {
                 </div>
             </div>
         </div>}
-        <div className='px-3'>
-            <p className='ml-2'>Hi Deep, here's your financial summary</p>
-            <div className='rounded-lg border border-gray-500 bg-white shadow-lg p-2 mt-3 flex'>
-              
+        <div className='px-5'>
+            <p className=''>Hi Deep, here's your financial summary</p>
+            <div className='mt-4'>
+                <Slider {...settings}>
+                    {/* <PieChart /> */}
+                    <BarGraph />
+                    <LineGraph />
+                </Slider>
             </div>
             
         </div>
