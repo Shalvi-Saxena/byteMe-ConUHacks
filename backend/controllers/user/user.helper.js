@@ -1,5 +1,5 @@
 const {
-  User: UserModel,
+  UserModel,
 } = require('../../models');
 
 const createUserHelper = async (userData) => {
@@ -13,7 +13,7 @@ const createUserHelper = async (userData) => {
     name,
     email,
     mobile,
-    password: employeeNo,
+    password: email,
   }
   const userDocument = new UserModel(userObject);
   await userDocument.save();

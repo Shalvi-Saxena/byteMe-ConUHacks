@@ -7,7 +7,7 @@ const {
 } = require('../controllers/user/user.middleware');
 
 router.get('/', UserController.getUserData);
-router.post('/', isUserAdmin, validateCreateUser, UserController.createNewUser);
+router.post('/', isUserAdmin, UserController.createNewUser);
 router.patch('/:id', validateUpdateUser, UserController.updateUser);
 
 module.exports = router;

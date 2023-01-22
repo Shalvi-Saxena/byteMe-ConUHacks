@@ -54,7 +54,7 @@ const UserSchema = new Schema({
     default_language: {
       type: String,
       enum: languages.map(l => l.code),
-      default: 'EN',
+      default: 'en',
     },
     categories: [CategorySchema],
   },

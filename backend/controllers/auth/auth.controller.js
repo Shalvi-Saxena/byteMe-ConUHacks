@@ -3,7 +3,7 @@ const {
   errorResponse,
 } = require('../../utils/response');
 const {
-  User: UserModel,
+  UserModel,
 } = require('../../models/index');
 const { STATUS_CODES, JWT_EXPIRY } = require('../../utils/constants');
 const jwt = require('jsonwebtoken');
@@ -31,7 +31,7 @@ const signin = async (req, res) => {
       findClause['mobile.countryCode'] = countryCode;
       findClause['mobile.number'] = mobileNumber;
     }
-    const userData = await UserModel.findOne(findClause).lean();
+    const userData = await UserModel.findOne(findClause);
     if (!userData) {
       throw {
         code: STATUS_CODES.DATA_NOT_FOUND,
@@ -50,13 +50,13 @@ const signin = async (req, res) => {
       expires: Date.now() + JWT_EXPIRY,
     };
     const token = jwt.sign(payload, process.env.JWT_SECRET);
-    delete userData.password;
     return successResponse({
       res,
       responseObject: {
         success: true,
         token: 'JWT ' + token,
-        ...userData,
+        userId: userData._id,
+        userName: userData.name,
       },
     });
   } catch (error) {
