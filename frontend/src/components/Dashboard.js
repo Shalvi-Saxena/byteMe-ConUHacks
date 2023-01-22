@@ -79,7 +79,7 @@ export const Dashboard = () => {
             })
           }
         </div>
-        <div className='mt-2 pb-14'>
+        <div className='mt-2 '>
           {
             [1].map((item, index) => {
               return (
@@ -88,7 +88,12 @@ export const Dashboard = () => {
             })
           }
         </div>
-
+        <div className=''>
+          <img src="/image.png" alt="" className='' />
+        </div>
+        <div className='pb-14'>
+          <img src="/image2.png" alt="" className='' />
+        </div>
       </div>
       <UploadBtn />
     </div>
